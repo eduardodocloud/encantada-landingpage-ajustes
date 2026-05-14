@@ -10,6 +10,16 @@
      min-width 1024px → desktop
    ======================================== */
 
+/* ─── CORREÇÃO GLOBAL: borda branca nas laterais ─── */
+/* Elementor containers têm padding:10px cada — zeramos para seções cobrirem tela cheia */
+.e-con-full,
+.e-con,
+.elementor-element.e-flex,
+.elementor-element.e-con-full {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* ─── VARIÁVEIS ─── */
 :root {
   --enc-pink:      #DA0881;
@@ -386,12 +396,12 @@ section.cases-section .cases-header p {
   max-height: none !important;
   height: auto !important;
   border-radius: var(--enc-radius) !important;
-  background: #fff !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
-  padding: 24px 20px !important;
+  background: #f8f7fc !important;
+  border: 1px solid rgba(218,8,129,0.12) !important;
+  padding: 20px 16px !important;
   display: grid !important;
   grid-template-columns: 1fr !important;
-  gap: 24px !important;
+  gap: 16px !important;
   overflow: visible !important;
   align-items: start !important;
 }
@@ -458,6 +468,7 @@ section.cases-section .cases-header p {
   display: flex !important;
   flex-direction: column !important;
   gap: 14px !important;
+  order: -1 !important; /* métricas aparecem primeiro no mobile */
 }
 
 .case-label {
@@ -530,6 +541,7 @@ section.cases-section .case-card .case-sub-label { color: rgba(255,255,255,0.4) 
   }
   .case-right {
     padding: 28px !important;
+    order: 0 !important; /* restaura ordem natural no desktop: narrativa | métricas */
   }
   .case-sub-val {
     font-size: 18px !important;
