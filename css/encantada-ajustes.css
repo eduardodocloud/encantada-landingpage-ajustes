@@ -635,11 +635,24 @@ section.portfolio-section p.sub {
   display: block !important;
 }
 
-/* Grid 2 colunas (layout original) */
+/* Grid 3 colunas, imagens proporcionais */
 .portfolio-grid {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 20px !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+}
+
+/* Imagem com altura fixa e crop */
+.portfolio-img-wrap {
+  height: 180px !important;
+  overflow: hidden !important;
+}
+
+.portfolio-img-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 /* Fundo escuro para texto branco ser legível */
@@ -654,6 +667,10 @@ section.portfolio-section p.sub {
 
 .portfolio-card:hover {
   border-color: #DA0881 !important;
+}
+
+.portfolio-body {
+  padding: 12px 16px 16px !important;
 }
 
 .portfolio-card:hover {
