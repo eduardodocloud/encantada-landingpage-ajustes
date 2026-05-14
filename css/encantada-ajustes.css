@@ -227,34 +227,154 @@ section.form-section {
   padding-bottom: 40px !important;
 }
 
-.form-step {
-  display: none !important;
+/* ── Form card container ── */
+.form-card {
+  background: #fff !important;
+  border-radius: 16px !important;
+  padding: 28px 20px !important;
+  box-shadow: 0 4px 32px rgba(218,8,129,0.08), 0 1px 4px rgba(0,0,0,0.06) !important;
+  max-width: 680px !important;
+  margin: 0 auto !important;
 }
 
-/* Mobile: 1 coluna */
-.form-step.active {
+.form-badge {
+  display: inline-block !important;
+  background: rgba(218,8,129,0.10) !important;
+  color: var(--enc-pink) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.form-card h3 {
+  font-size: clamp(18px, 4vw, 22px) !important;
+  font-weight: 800 !important;
+  color: #0F0A18 !important;
+  margin: 0 0 6px !important;
+  line-height: 1.2 !important;
+}
+
+.form-card p.sub {
+  font-size: 13px !important;
+  color: #666 !important;
+  margin: 0 0 18px !important;
+}
+
+/* ── Step nav dots ── */
+.form-steps-nav {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 20px !important;
+}
+
+.fsn-dot {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: #e8e8e8 !important;
+  color: #999 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: background 0.2s, color 0.2s !important;
+}
+
+.fsn-dot.active {
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+}
+
+.fsn-line {
+  flex: 1 !important;
+  height: 2px !important;
+  background: #e8e8e8 !important;
+  border-radius: 2px !important;
+  max-width: 48px !important;
+}
+
+/* ── Form pages (steps) ── */
+.form-page {
+  display: block !important;
+}
+
+/* ── Field rows — 1 col mobile, 2 col tablet+ ── */
+.form-row {
   display: grid !important;
   grid-template-columns: 1fr !important;
   gap: 12px !important;
-}
-
-.form-step .form-field-full {
-  grid-column: 1 / -1 !important;
-}
-
-.form-step-indicator {
-  font-size: 12px !important;
-  color: var(--enc-muted) !important;
   margin-bottom: 12px !important;
-  grid-column: 1 / -1 !important;
 }
 
-.form-step-nav {
-  margin-top: 12px !important;
-  grid-column: 1 / -1 !important;
+.form-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
 }
 
-.btn-step-next {
+.form-field label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  letter-spacing: .02em !important;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border: 1.5px solid #ddd !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  color: #222 !important;
+  background: #fafafa !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.15s !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--enc-pink) !important;
+  background: #fff !important;
+}
+
+.form-field textarea {
+  min-height: 80px !important;
+  resize: vertical !important;
+}
+
+/* ── Consent ── */
+.form-consent {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  margin: 14px 0 16px !important;
+  font-size: 12px !important;
+  color: #666 !important;
+}
+
+.form-consent input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  margin-top: 2px !important;
+  flex-shrink: 0 !important;
+  accent-color: var(--enc-pink) !important;
+}
+
+/* ── Step next / submit buttons ── */
+.btn-step-next,
+#btn-enviar {
   background: var(--enc-pink) !important;
   color: #fff !important;
   border: none !important;
@@ -264,14 +384,33 @@ section.form-section {
   cursor: pointer !important;
   font-size: 15px !important;
   width: 100% !important;
+  margin-top: 4px !important;
+  transition: opacity 0.15s !important;
+}
+
+.btn-step-next:hover,
+#btn-enviar:hover {
+  opacity: 0.88 !important;
+}
+
+/* ── Disclaimer ── */
+.form-disclaimer {
+  font-size: 11px !important;
+  color: #999 !important;
+  text-align: center !important;
+  margin-top: 10px !important;
 }
 
 @media (min-width: 600px) {
-  .form-step.active {
+  .form-row {
     grid-template-columns: 1fr 1fr !important;
   }
-  .btn-step-next {
+  .btn-step-next,
+  #btn-enviar {
     width: auto !important;
+  }
+  .form-card {
+    padding: 36px 32px !important;
   }
 }
 
