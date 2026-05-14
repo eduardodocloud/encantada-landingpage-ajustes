@@ -328,38 +328,146 @@ section.cases-section .cases-header p {
   margin-bottom: 24px !important;
 }
 
-/* Carousel/grid de cases — 3 colunas */
-.carousel.cases-carousel,
-.cases-cards,
-.cases-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 16px !important;
+/* Carousel de cases — restaurar estrutura original (1 card por vez) */
+.carousel.cases-carousel {
+  display: block !important;
 }
 
+/* Card do case: 2 colunas — narrativa | métricas */
 .case-card {
-  max-height: 260px !important;
+  max-height: none !important;
+  height: auto !important;
   border-radius: var(--enc-radius) !important;
-  background: var(--enc-card-dark) !important;
-  border: 1px solid var(--enc-border) !important;
-  padding: 20px !important;
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  padding: 36px 40px !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  overflow: visible !important;
+  align-items: start !important;
+}
+
+/* Coluna esquerda — narrativa */
+.case-left {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
-  overflow: hidden !important;
+  gap: 18px !important;
+}
+
+.case-num {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  color: #DA0881 !important;
+  text-transform: uppercase !important;
 }
 
 .case-card h3 {
-  font-size: 15px !important;
-  margin-bottom: 4px !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #0F0A18 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
 }
 
-.case-card p {
+.case-sector {
   font-size: 13px !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
+  color: rgba(0,0,0,0.45) !important;
+  margin-top: -10px !important;
+}
+
+.case-block h4 {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: rgba(0,0,0,0.4) !important;
+  margin-bottom: 6px !important;
+}
+
+.case-block p,
+.case-card p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: rgba(0,0,0,0.7) !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+
+.case-sign {
+  font-size: 13px !important;
+  color: rgba(0,0,0,0.5) !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* Coluna direita — métricas */
+.case-right {
+  background: #0F0A18 !important;
+  border-radius: 12px !important;
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.case-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #DA0881 !important;
+}
+
+.case-metric {
+  font-size: clamp(36px, 5vw, 56px) !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+  line-height: 1 !important;
+}
+
+.case-desc {
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.55) !important;
+  line-height: 1.5 !important;
+}
+
+.case-subs {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.case-sub {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.case-sub-val {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+}
+
+.case-sub-label {
+  font-size: 10px !important;
+  color: rgba(255,255,255,0.4) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Mobile: empilhar colunas */
+@media (max-width: 767px) {
+  .case-card {
+    grid-template-columns: 1fr !important;
+    padding: 24px 20px !important;
+    gap: 24px !important;
+  }
 }
 
 /* ─────────────────────────────────────────
