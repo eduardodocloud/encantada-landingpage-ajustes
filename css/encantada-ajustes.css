@@ -508,7 +508,8 @@ section.hub-intel-section .hub-intel-desc {
   width: 100% !important;
   height: auto !important;
   max-width: 860px !important;
-  margin: 0 auto !important;
+  margin: 48px auto 0 !important;
+  padding-top: 8px !important;
 }
 
 /* Resetar posicionamento absoluto dos cards */
@@ -520,7 +521,7 @@ section.hub-intel-section .hub-intel-desc {
   right: auto !important;
   bottom: auto !important;
   width: 100% !important;
-  max-height: 160px !important;
+  max-height: none !important;
   border-radius: var(--enc-radius) !important;
   background: var(--enc-card-dark) !important;
   border: 1px solid var(--enc-border) !important;
@@ -528,7 +529,7 @@ section.hub-intel-section .hub-intel-desc {
   display: flex !important;
   flex-direction: column !important;
   gap: 6px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   transition: border-color 0.2s !important;
 }
 
@@ -640,12 +641,18 @@ section.portfolio-section p.sub {
   gap: 0 !important;
 }
 
+/* Fundo escuro para texto branco ser legível */
 .portfolio-card {
   max-height: none !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  border: none !important;
+  border-radius: 10px !important;
+  background: #1A1225 !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
   padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.portfolio-card:hover {
+  border-color: #DA0881 !important;
 }
 
 .portfolio-card:hover {
