@@ -1,0 +1,955 @@
+/* ========================================
+   ENCANTADA — AJUSTES DE LAYOUT E CONVERSÃO
+   Versão: 1.0 — Maio 2026
+   Como aplicar: Aparência > CSS Adicional (WordPress)
+   Repo: github.com/eduardodocloud/encantada-landingpage-ajustes
+   ======================================== */
+
+/* ─── VARIÁVEIS ─── */
+:root {
+  --enc-pink:      #DA0881;
+  --enc-dark:      #0F0A18;
+  --enc-card-dark: #1A1225;
+  --enc-white:     rgba(255,255,255,0.92);
+  --enc-muted:     rgba(255,255,255,0.52);
+  --enc-border:    rgba(255,255,255,0.12);
+  --enc-radius:    12px;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 1 — HERO
+   Atual: 757px  →  Meta: ≤ 680px
+   Reduzir h1 de 83px → 52px, compactar hero-sub,
+   garantir CTAs visíveis e com cores corretas
+───────────────────────────────────────── */
+
+section.hero h1 {
+  font-size: clamp(36px, 4.2vw, 52px) !important;
+  line-height: 1.05 !important;
+  margin-bottom: 14px !important;
+}
+
+.hero-badge {
+  margin-bottom: 14px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  padding: 6px 14px !important;
+}
+
+.hero-sub {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  max-width: 520px !important;
+  border-left: 3px solid var(--enc-pink) !important;
+  padding-left: 14px !important;
+  margin-bottom: 22px !important;
+  color: var(--enc-muted) !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.hero-ctas {
+  display: flex !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 28px !important;
+}
+
+/* Botão primário — rosa, sempre */
+.hero-ctas .btn-primary,
+a.btn-primary {
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 14px 28px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: opacity 0.2s !important;
+}
+
+.hero-ctas .btn-primary:hover,
+a.btn-primary:hover {
+  opacity: 0.88 !important;
+}
+
+/* Botão ghost */
+.hero-ctas .btn-ghost,
+a.btn-ghost {
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,0.20) !important;
+  color: var(--enc-white) !important;
+  padding: 12px 22px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.hero-stats {
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid var(--enc-border) !important;
+}
+
+/* Escalar levemente o dashboard para caber no viewport */
+.dash-card {
+  transform: scale(0.90) !important;
+  transform-origin: top right !important;
+}
+
+/* ─────────────────────────────────────────
+   LOGOS / CLIENTES — FIX CONTRASTE
+   Logos invisíveis sobre fundo escuro
+───────────────────────────────────────── */
+
+.logos-track img,
+.clients-logos img,
+[class*="logo-slide"] img,
+[class*="client-logo"] img,
+.carrossel-logos img,
+.carousel-logos img,
+.logo-carousel img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.65 !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 3 — QUEM SOMOS (ABOUT)
+   Atual: 646px  →  Meta: ≤ 640px
+   Reduzir padding e h2, compactar tags
+───────────────────────────────────────── */
+
+section.about-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.about-section .section-title {
+  font-size: clamp(26px, 2.8vw, 38px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 14px !important;
+}
+
+section.about-section p {
+  font-size: 14.5px !important;
+  line-height: 1.65 !important;
+  margin-bottom: 14px !important;
+}
+
+/* Tags / pills — espaçamento comprimido */
+.about-tags,
+.about-pills,
+.tag-cloud,
+[class*="about-tag"] {
+  gap: 8px !important;
+  margin-top: 14px !important;
+  flex-wrap: wrap !important;
+  display: flex !important;
+}
+
+.about-tags span,
+.about-pills span,
+.pill,
+.tag-cloud .tag,
+.chip {
+  font-size: 12px !important;
+  padding: 5px 12px !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 4 — FORMULÁRIO DE DIAGNÓSTICO
+   Atual: 1025px  →  Meta: ≤ 680px
+   Step-form (2 etapas via JS) — CSS de suporte
+───────────────────────────────────────── */
+
+section.form-section {
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+}
+
+/* --- Step-form classes adicionadas via JS --- */
+.form-step {
+  display: none !important;
+}
+
+.form-step.active {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+}
+
+.form-step .form-field-full {
+  grid-column: 1 / -1 !important;
+}
+
+.form-step-indicator {
+  font-size: 12px !important;
+  color: var(--enc-muted) !important;
+  margin-bottom: 12px !important;
+  grid-column: 1 / -1 !important;
+}
+
+.form-step-nav {
+  margin-top: 12px !important;
+  grid-column: 1 / -1 !important;
+}
+
+.btn-step-next {
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 13px 24px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 5 — PROBLEMA / DOR
+   Atual: 1205px  →  Meta: ≤ 680px
+   Reduzir padding 140→56px, h2 57→40px,
+   cards em grid 2 colunas
+───────────────────────────────────────── */
+
+section.pain-section {
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+}
+
+section.pain-section .section-title {
+  font-size: clamp(26px, 3vw, 40px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Subtítulo: máx. 2 linhas */
+section.pain-section .section-sub,
+section.pain-section p.sub,
+.pain-section .section-intro p {
+  font-size: 14px !important;
+  max-width: 640px !important;
+  margin: 0 auto 28px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Grid 2 colunas nos cards de dor */
+.pain-inner {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+}
+
+/* Pain cards wrapper — 2 col */
+.pain-cards,
+.pain-grid,
+.pain-section .cards-wrapper,
+.pain-inner [class*="pain-cards"] {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+}
+
+/* Card item */
+.pain-card:not(.pain-card-num) {
+  max-height: 200px !important;
+  overflow: hidden !important;
+  padding: 20px 22px !important;
+  border-radius: var(--enc-radius) !important;
+}
+
+.pain-card h3,
+.pain-card-title {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  margin-bottom: 8px !important;
+}
+
+.pain-card p:not(.pain-card-num) {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Número decorativo do card — esconder pra não ocupar espaço */
+.pain-card-num {
+  display: none !important;
+}
+
+/* CTA de saída — adicionado via JS */
+.pain-cta-exit {
+  text-align: center !important;
+  margin-top: 24px !important;
+  font-size: 14px !important;
+  color: var(--enc-muted) !important;
+}
+
+.pain-cta-exit a {
+  color: var(--enc-pink) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 6 — CASES / PLANILHA
+   Atual: 1187px  →  Meta: ≤ 680px
+   Reduzir intro, compactar cards em 3 col
+───────────────────────────────────────── */
+
+section.cases-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.cases-section .section-title {
+  font-size: clamp(22px, 2.6vw, 36px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
+
+section.cases-section .section-sub,
+section.cases-section .cases-header p {
+  font-size: 13px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Carousel/grid de cases — 3 colunas */
+.carousel.cases-carousel,
+.cases-cards,
+.cases-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+}
+
+.case-card {
+  max-height: 260px !important;
+  border-radius: var(--enc-radius) !important;
+  background: var(--enc-card-dark) !important;
+  border: 1px solid var(--enc-border) !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  overflow: hidden !important;
+}
+
+.case-card h3 {
+  font-size: 15px !important;
+  margin-bottom: 4px !important;
+}
+
+.case-card p {
+  font-size: 13px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 7 — CTA INTERMEDIÁRIO ("Sua vez")
+   Atual: 433px  →  Manter ≤ 0.6 dobras
+   Cor botão primário: preto → rosa
+───────────────────────────────────────── */
+
+section.cta-band {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+/* Botão primário → rosa */
+section.cta-band .btn-dark {
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 14px 28px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+}
+
+section.cta-band .btn-white-ghost {
+  padding: 12px 22px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 8 — DEPOIMENTOS EM VÍDEO
+   Atual: 826px  →  Meta: ≤ 620px
+   Fix thumbnails pretas, compactar heading
+───────────────────────────────────────── */
+
+section.test-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.test-section .section-title {
+  font-size: clamp(20px, 2.4vw, 32px) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 8px !important;
+}
+
+section.test-section .section-sub {
+  font-size: 13px !important;
+  margin-bottom: 24px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Fix thumbnails pretas — fallback visual */
+.tc-thumb {
+  background-color: var(--enc-card-dark) !important;
+  min-height: 160px !important;
+  object-fit: cover !important;
+  width: 100% !important;
+  display: block !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+/* Wrapper do thumb com ícone play (adicionado via JS) */
+.tc-thumb-wrap {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 8px 8px 0 0 !important;
+  cursor: pointer !important;
+}
+
+.tc-play-icon {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 36px !important;
+  color: rgba(255,255,255,0.85) !important;
+  background: rgba(0,0,0,0.30) !important;
+  pointer-events: none !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 9 — MÓDULOS HUB
+   Atual: 1706px  →  Meta: ≤ 640px
+   Hub-wheel hexagonal → Grid 3×2 compacto
+───────────────────────────────────────── */
+
+section.hub-intel-section {
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+}
+
+section.hub-intel-section h2,
+section.hub-intel-section .hub-intel-title {
+  font-size: clamp(26px, 3.2vw, 42px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
+
+section.hub-intel-section .hub-intel-desc {
+  font-size: 14px !important;
+  margin-bottom: 32px !important;
+  max-width: 560px !important;
+}
+
+/* Sub-label e sub-headline redundantes — ocultar */
+.modulos-inner > .eyebrow,
+.modulos-inner > .sub-headline,
+.modulos-inner > h3:first-child,
+.hub-sub-label,
+.hub-sub-headline {
+  display: none !important;
+}
+
+/* Hub-wheel: substituir layout absoluto por grid 3×2 */
+.hub-wheel {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
+}
+
+/* Resetar posicionamento absoluto dos cards */
+.hub-card {
+  position: static !important;
+  transform: none !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  max-height: 160px !important;
+  border-radius: var(--enc-radius) !important;
+  background: var(--enc-card-dark) !important;
+  border: 1px solid var(--enc-border) !important;
+  padding: 16px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+  transition: border-color 0.2s !important;
+}
+
+.hub-card:hover {
+  border-color: var(--enc-pink) !important;
+}
+
+.hub-card .hub-card-icon,
+.hub-card .icon,
+.hub-card svg {
+  width: 20px !important;
+  height: 20px !important;
+  font-size: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.hub-card h3,
+.hub-card .hub-card-title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  color: var(--enc-white) !important;
+}
+
+.hub-card p,
+.hub-card .hub-card-desc {
+  font-size: 12px !important;
+  color: var(--enc-muted) !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+/* Ocultar elemento central decorativo do hub-wheel */
+.hub-center,
+.hub-core,
+.hub-wheel > svg,
+.hub-wheel > .hub-center-logo {
+  display: none !important;
+}
+
+/* modulos-inner centralizado */
+.modulos-inner {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 10 — ESQUISITINHO (MANIFESTO)
+   Mover para rodapé via JS
+   CSS: ocultar na posição original, mostrar no footer
+───────────────────────────────────────── */
+
+section#esquisitinho.mascote-section {
+  display: none !important;
+}
+
+/* Exibido no footer quando movido via JS */
+.footer-esquisitinho {
+  padding: 32px 0 24px !important;
+  border-top: 1px solid var(--enc-border) !important;
+  margin-bottom: 16px !important;
+}
+
+.footer-esquisitinho h2 {
+  font-size: 22px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 8px !important;
+}
+
+.footer-esquisitinho p {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: var(--enc-muted) !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 11 — PORTFÓLIO / CARDS DE SERVIÇO
+   Atual: 1429px  →  Meta: ≤ 640px
+   Ocultar imagens grandes, grid 3×2 compacto
+───────────────────────────────────────── */
+
+section.portfolio-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.portfolio-section h2 {
+  font-size: clamp(20px, 2.6vw, 34px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
+
+section.portfolio-section .section-sub,
+section.portfolio-section p.sub {
+  font-size: 13px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Ocultar imagem grande — ela quebra a altura */
+.portfolio-img-wrap {
+  display: none !important;
+}
+
+/* Grid 3×2 compacto */
+.portfolio-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+}
+
+.portfolio-card {
+  max-height: 140px !important;
+  border-radius: var(--enc-radius) !important;
+  background: var(--enc-card-dark) !important;
+  border: 1px solid var(--enc-border) !important;
+  padding: 16px 18px !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  transition: border-color 0.2s !important;
+  overflow: hidden !important;
+}
+
+.portfolio-card:hover {
+  border-color: var(--enc-pink) !important;
+}
+
+.portfolio-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Tag de categoria */
+.portfolio-body [class*="tag"],
+.portfolio-body [class*="category"],
+.portfolio-body [class*="cat"],
+.portfolio-card-cat,
+.portfolio-card-tag {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: var(--enc-pink) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+.portfolio-card h3,
+.portfolio-card-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--enc-white) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.portfolio-card p,
+.portfolio-card-desc {
+  font-size: 12px !important;
+  color: var(--enc-muted) !important;
+  margin: 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 12 — MÉTODO
+   Atual: 963px  →  Meta: ≤ 640px
+   Timeline horizontal (desktop) via JS + CSS
+───────────────────────────────────────── */
+
+section.method-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.method-section h2 {
+  font-size: clamp(22px, 2.6vw, 34px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+}
+
+section.method-section .section-sub,
+section.method-section p.sub {
+  font-size: 13px !important;
+  margin-bottom: 32px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Timeline horizontal — classe adicionada via JS no desktop */
+.method-steps.timeline-horizontal {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  position: relative !important;
+  padding-top: 20px !important;
+}
+
+.method-steps.timeline-horizontal::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 38px !important;
+  left: 12% !important;
+  right: 12% !important;
+  height: 1px !important;
+  background: var(--enc-border) !important;
+  z-index: 0 !important;
+}
+
+.method-steps.timeline-horizontal .step {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 0 12px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.method-steps.timeline-horizontal .step-num {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 50% !important;
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  margin-bottom: 14px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.method-steps.timeline-horizontal .step h3 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+  line-height: 1.3 !important;
+}
+
+.method-steps.timeline-horizontal .step p {
+  font-size: 12px !important;
+  color: var(--enc-muted) !important;
+  line-height: 1.5 !important;
+}
+
+.method-steps.timeline-horizontal .step-chip {
+  font-size: 11px !important;
+  margin-top: 8px !important;
+  padding: 3px 10px !important;
+}
+
+/* ─────────────────────────────────────────
+   SEÇÃO 13 — FAQ
+   Atual: 1119px  →  Meta: ≤ 640px
+   Reduzir padding 120→48px, tipografia compacta
+───────────────────────────────────────── */
+
+section.faq-section {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+section.faq-section h2 {
+  font-size: clamp(20px, 2.4vw, 32px) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 24px !important;
+}
+
+/* Item do FAQ — usa <details> */
+.faq-item,
+.faq-list details {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--enc-border) !important;
+}
+
+.faq-item summary,
+.faq-q {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  color: var(--enc-white) !important;
+  list-style: none !important;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.faq-item p,
+.faq-a {
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+  color: var(--enc-muted) !important;
+  margin-top: 8px !important;
+}
+
+/* ─────────────────────────────────────────
+   CTA PRIMÁRIO — GARANTIA GLOBAL
+   Em toda a página, btn-primary = rosa (#DA0881)
+───────────────────────────────────────── */
+
+.btn-primary,
+a.btn-primary,
+button.btn-primary,
+[class*="btn-submit"],
+.form-section [type="submit"],
+input[type="submit"] {
+  background: var(--enc-pink) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+/* ─────────────────────────────────────────
+   IMAGENS SEM FALLBACK
+   Se imagem não carregar, fundo substituto visível
+───────────────────────────────────────── */
+
+img {
+  color: transparent !important;
+}
+
+img[src=""],
+img:not([src]),
+img[src$="#"] {
+  background-color: rgba(255,255,255,0.06) !important;
+  min-height: 80px !important;
+  display: block !important;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVIDADE — TABLET (768px – 1023px)
+───────────────────────────────────────── */
+
+@media (max-width: 1023px) {
+  section.hero h1 {
+    font-size: clamp(30px, 5.5vw, 44px) !important;
+  }
+
+  .hub-wheel {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .carousel.cases-carousel,
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Timeline: layout vertical no tablet */
+  .method-steps.timeline-horizontal {
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding-top: 0 !important;
+  }
+
+  .method-steps.timeline-horizontal::before {
+    display: none !important;
+  }
+
+  .method-steps.timeline-horizontal .step {
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex-direction: row !important;
+    gap: 14px !important;
+  }
+
+  .method-steps.timeline-horizontal .step-num {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVIDADE — MOBILE (< 768px)
+───────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  section.hero h1 {
+    font-size: clamp(26px, 7.5vw, 36px) !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column !important;
+  }
+
+  .hero-ctas a {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .hub-wheel {
+    grid-template-columns: 1fr !important;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .carousel.cases-carousel,
+  .cases-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pain-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form-step.active {
+    grid-template-columns: 1fr !important;
+  }
+
+  section.pain-section,
+  section.cases-section,
+  section.about-section,
+  section.form-section,
+  section.test-section,
+  section.hub-intel-section,
+  section.portfolio-section,
+  section.method-section,
+  section.faq-section,
+  section.cta-band {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
