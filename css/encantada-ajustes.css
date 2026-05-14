@@ -1094,3 +1094,9 @@ img[src$="#"] {
   min-height: 80px !important;
   display: block !important;
 }
+
+/* ─── WIDGETS FLUTUANTES — ocultar chat e acessibilidade ─── */
+/* Brevo chat (balão rosa/branco esquerda) */
+#brevo-conversations { display: none !important; }
+/* ea11y — widget de acessibilidade (botão azul direita) */
+#ea11y-root { display: none !important; }
