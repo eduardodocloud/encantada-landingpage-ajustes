@@ -852,6 +852,7 @@ section.method-section p.sub {
 section.faq-section {
   padding-top: 48px !important;
   padding-bottom: 48px !important;
+  background: #0F0A18 !important;
 }
 
 section.faq-section h2 {
@@ -860,19 +861,28 @@ section.faq-section h2 {
   margin-bottom: 24px !important;
 }
 
-/* Item do FAQ — usa <details> */
+.faq-inner,
+.faq-list {
+  background: transparent !important;
+}
+
+/* Item do FAQ — card escuro */
 .faq-item,
 .faq-list details {
-  padding: 12px 16px !important;
-  border-bottom: 1px solid var(--enc-border) !important;
+  background: #1A1225 !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 10px !important;
+  margin-bottom: 10px !important;
+  padding: 14px 18px !important;
 }
 
 .faq-item summary,
+.faq-list details summary,
 .faq-q {
   font-size: 15px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  color: var(--enc-white) !important;
+  color: rgba(255,255,255,0.92) !important;
   list-style: none !important;
 }
 
@@ -880,22 +890,17 @@ section.faq-section h2 {
   display: none !important;
 }
 
+/* Respostas visíveis com cor correta */
 .faq-item p,
+.faq-list details > p,
+.faq-answer,
 .faq-a {
   font-size: 13px !important;
   line-height: 1.65 !important;
-  color: var(--enc-muted) !important;
+  color: rgba(255,255,255,0.55) !important;
   margin-top: 8px !important;
-}
-
-/* Fix respostas FAQ — garantir visibilidade */
-.faq-list details > p,
-.faq-item > p,
-.faq-answer {
   display: block !important;
   visibility: visible !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
   overflow: visible !important;
   max-height: none !important;
   -webkit-line-clamp: unset !important;

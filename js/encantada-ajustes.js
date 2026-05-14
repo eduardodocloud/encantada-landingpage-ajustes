@@ -406,6 +406,24 @@
     footer.insertBefore(wrapper, footer.firstChild);
   }
 
+  /* ─── 8. LAZY LOADING NAS IMAGENS ABAIXO DA DOBRA ────────────
+     Adiciona loading="lazy" em imagens fora do viewport inicial.
+     Preserva fetchpriority="high" no hero (LCP).
+  ───────────────────────────────────────────────────────────── */
+  function lazyLoadImages() {
+    var heroImg = document.querySelector('.hero img, .hero-media img');
+    if (heroImg) heroImg.fetchPriority = 'high';
+
+    var foldThreshold = window.innerHeight * 1.2;
+    document.querySelectorAll('img').forEach(function (img) {
+      if (img === heroImg) return;
+      var top = img.getBoundingClientRect().top;
+      if (top > foldThreshold && img.loading !== 'lazy') {
+        img.loading = 'lazy';
+      }
+    });
+  }
+
   /* ─── INICIALIZAÇÃO ────────────────────────────────────────
      Executa todas as funções após o DOM estar pronto.
   ───────────────────────────────────────────────────────────── */
@@ -417,6 +435,7 @@
     addFaqQuestions();
     moveEsquisitinho();
     initStepForm();
+    lazyLoadImages();
   }
 
   if (document.readyState === 'loading') {
