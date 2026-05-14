@@ -36,8 +36,9 @@
    ═══════════════════════════════════════ */
 
 section.hero {
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  min-height: auto !important;
 }
 
 section.hero h1 {
@@ -60,10 +61,9 @@ section.hero h1 {
   padding-left: 14px !important;
   margin-bottom: 22px !important;
   color: var(--enc-muted) !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 3 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
 }
 
 .hero-ctas {
@@ -1096,7 +1096,10 @@ img[src$="#"] {
 }
 
 /* ─── WIDGETS FLUTUANTES — ocultar chat e acessibilidade ─── */
-/* Brevo chat (balão rosa/branco esquerda) */
-#brevo-conversations { display: none !important; }
-/* ea11y — widget de acessibilidade (botão azul direita) */
+/* Brevo chat — todas as variantes (desktop e mobile) */
+#brevo-conversations,
+[id^="brevo"],
+[class*="brevo-conversations"],
+[class*="sib-conversations"] { display: none !important; }
+/* ea11y — widget de acessibilidade (botão azul) */
 #ea11y-root { display: none !important; }
