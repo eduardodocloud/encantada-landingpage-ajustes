@@ -510,6 +510,7 @@ section.hub-intel-section .hub-intel-desc {
   max-width: 860px !important;
   margin: 48px auto 0 !important;
   padding-top: 8px !important;
+  gap: 70px 20px !important;
 }
 
 /* Resetar posicionamento absoluto dos cards */
@@ -638,7 +639,7 @@ section.portfolio-section p.sub {
 .portfolio-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 0 !important;
+  gap: 20px !important;
 }
 
 /* Fundo escuro para texto branco ser legível */
