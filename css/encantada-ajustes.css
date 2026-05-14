@@ -1,8 +1,13 @@
 /* ========================================
    ENCANTADA — AJUSTES DE LAYOUT E CONVERSÃO
-   Versão: 1.0 — Maio 2026
+   Versão: 2.0 — Maio 2026 — MOBILE FIRST
    Como aplicar: Aparência > CSS Adicional (WordPress)
    Repo: github.com/eduardodocloud/encantada-landingpage-ajustes
+
+   Breakpoints:
+     Base         → mobile  (< 600px)
+     min-width 600px  → tablet
+     min-width 1024px → desktop
    ======================================== */
 
 /* ─── VARIÁVEIS ─── */
@@ -16,15 +21,17 @@
   --enc-radius:    12px;
 }
 
-/* ─────────────────────────────────────────
+/* ═══════════════════════════════════════
    SEÇÃO 1 — HERO
-   Atual: 757px  →  Meta: ≤ 680px
-   Reduzir h1 de 83px → 52px, compactar hero-sub,
-   garantir CTAs visíveis e com cores corretas
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
+
+section.hero {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
 
 section.hero h1 {
-  font-size: clamp(36px, 4.2vw, 52px) !important;
+  font-size: clamp(28px, 8vw, 52px) !important;
   line-height: 1.05 !important;
   margin-bottom: 14px !important;
 }
@@ -37,27 +44,31 @@ section.hero h1 {
 }
 
 .hero-sub {
-  font-size: 15px !important;
+  font-size: 14px !important;
   line-height: 1.55 !important;
-  max-width: 520px !important;
   border-left: 3px solid var(--enc-pink) !important;
   padding-left: 14px !important;
   margin-bottom: 22px !important;
   color: var(--enc-muted) !important;
   display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
+  -webkit-line-clamp: 3 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
 }
 
 .hero-ctas {
   display: flex !important;
+  flex-direction: column !important;
   gap: 12px !important;
-  flex-wrap: wrap !important;
   margin-bottom: 28px !important;
 }
 
-/* Botão primário — rosa, sempre */
+.hero-ctas a {
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+
 .hero-ctas .btn-primary,
 a.btn-primary {
   background: var(--enc-pink) !important;
@@ -70,16 +81,11 @@ a.btn-primary {
   text-decoration: none !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 6px !important;
   transition: opacity 0.2s !important;
 }
 
-.hero-ctas .btn-primary:hover,
-a.btn-primary:hover {
-  opacity: 0.88 !important;
-}
-
-/* Botão ghost */
 .hero-ctas .btn-ghost,
 a.btn-ghost {
   background: transparent !important;
@@ -92,6 +98,7 @@ a.btn-ghost {
   text-decoration: none !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 6px !important;
 }
 
@@ -101,16 +108,42 @@ a.btn-ghost {
   border-top: 1px solid var(--enc-border) !important;
 }
 
-/* Escalar levemente o dashboard para caber no viewport */
 .dash-card {
-  transform: scale(0.90) !important;
+  transform: scale(0.85) !important;
   transform-origin: top right !important;
 }
 
-/* ─────────────────────────────────────────
-   LOGOS / CLIENTES — FIX CONTRASTE
-   Logos invisíveis sobre fundo escuro
-───────────────────────────────────────── */
+@media (min-width: 600px) {
+  .hero-ctas {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-ctas a {
+    width: auto !important;
+  }
+  .hero-sub {
+    font-size: 15px !important;
+    -webkit-line-clamp: 2 !important;
+    max-width: 520px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.hero {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  section.hero h1 {
+    font-size: clamp(36px, 4.2vw, 52px) !important;
+  }
+  .dash-card {
+    transform: scale(0.90) !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   LOGOS / CLIENTES
+   ═══════════════════════════════════════ */
 
 .logos-track img,
 .clients-logos img,
@@ -123,19 +156,17 @@ a.btn-ghost {
   opacity: 0.65 !important;
 }
 
-/* ─────────────────────────────────────────
+/* ═══════════════════════════════════════
    SEÇÃO 3 — QUEM SOMOS (ABOUT)
-   Atual: 646px  →  Meta: ≤ 640px
-   Reduzir padding e h2, compactar tags
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section.about-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.about-section .section-title {
-  font-size: clamp(26px, 2.8vw, 38px) !important;
+  font-size: clamp(22px, 5vw, 38px) !important;
   line-height: 1.1 !important;
   margin-bottom: 14px !important;
 }
@@ -146,7 +177,6 @@ section.about-section p {
   margin-bottom: 14px !important;
 }
 
-/* Tags / pills — espaçamento comprimido */
 .about-tags,
 .about-pills,
 .tag-cloud,
@@ -166,25 +196,30 @@ section.about-section p {
   padding: 5px 12px !important;
 }
 
-/* ─────────────────────────────────────────
-   SEÇÃO 4 — FORMULÁRIO DE DIAGNÓSTICO
-   Atual: 1025px  →  Meta: ≤ 680px
-   Step-form (2 etapas via JS) — CSS de suporte
-───────────────────────────────────────── */
-
-section.form-section {
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+@media (min-width: 1024px) {
+  section.about-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
 }
 
-/* --- Step-form classes adicionadas via JS --- */
+/* ═══════════════════════════════════════
+   SEÇÃO 4 — FORMULÁRIO DE DIAGNÓSTICO
+   ═══════════════════════════════════════ */
+
+section.form-section {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
 .form-step {
   display: none !important;
 }
 
+/* Mobile: 1 coluna */
 .form-step.active {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr !important;
   gap: 12px !important;
 }
 
@@ -213,60 +248,64 @@ section.form-section {
   font-weight: 700 !important;
   cursor: pointer !important;
   font-size: 15px !important;
+  width: 100% !important;
 }
 
-/* ─────────────────────────────────────────
+@media (min-width: 600px) {
+  .form-step.active {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .btn-step-next {
+    width: auto !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.form-section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 5 — PROBLEMA / DOR
-   Atual: 1205px  →  Meta: ≤ 680px
-   Reduzir padding 140→56px, h2 57→40px,
-   cards em grid 2 colunas
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section.pain-section {
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.pain-section .section-title {
-  font-size: clamp(26px, 3vw, 40px) !important;
+  font-size: clamp(22px, 5vw, 40px) !important;
   line-height: 1.1 !important;
   margin-bottom: 12px !important;
 }
 
-/* Subtítulo: máx. 2 linhas */
 section.pain-section .section-sub,
 section.pain-section p.sub,
 .pain-section .section-intro p {
   font-size: 14px !important;
-  max-width: 640px !important;
-  margin: 0 auto 28px !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
+  margin-bottom: 24px !important;
 }
 
-/* Grid 2 colunas nos cards de dor */
+/* Mobile: 1 coluna */
 .pain-inner {
   display: grid !important;
   grid-template-columns: 1fr !important;
 }
 
-/* Pain cards wrapper — 2 col */
 .pain-cards,
 .pain-grid,
 .pain-section .cards-wrapper,
 .pain-inner [class*="pain-cards"] {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 16px !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
 }
 
-/* Card item */
 .pain-card:not(.pain-card-num) {
-  max-height: 200px !important;
-  overflow: hidden !important;
-  padding: 20px 22px !important;
+  padding: 18px 20px !important;
   border-radius: var(--enc-radius) !important;
 }
 
@@ -280,18 +319,12 @@ section.pain-section p.sub,
 .pain-card p:not(.pain-card-num) {
   font-size: 13px !important;
   line-height: 1.5 !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
 }
 
-/* Número decorativo do card — esconder pra não ocupar espaço */
 .pain-card-num {
   display: none !important;
 }
 
-/* CTA de saída — adicionado via JS */
 .pain-cta-exit {
   text-align: center !important;
   margin-top: 24px !important;
@@ -305,19 +338,34 @@ section.pain-section p.sub,
   text-decoration: none !important;
 }
 
-/* ─────────────────────────────────────────
+@media (min-width: 600px) {
+  .pain-cards,
+  .pain-grid,
+  .pain-section .cards-wrapper,
+  .pain-inner [class*="pain-cards"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.pain-section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 6 — CASES / PLANILHA
-   Atual: 1187px  →  Meta: ≤ 680px
-   Reduzir intro, compactar cards em 3 col
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section.cases-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.cases-section .section-title {
-  font-size: clamp(22px, 2.6vw, 36px) !important;
+  font-size: clamp(20px, 5vw, 36px) !important;
   line-height: 1.1 !important;
   margin-bottom: 8px !important;
 }
@@ -328,31 +376,30 @@ section.cases-section .cases-header p {
   margin-bottom: 24px !important;
 }
 
-/* Carousel de cases — restaurar estrutura original (1 card por vez) */
+/* Carousel: 1 card por vez */
 .carousel.cases-carousel {
   display: block !important;
 }
 
-/* Card do case: 2 colunas — narrativa | métricas */
+/* Card: mobile = 1 coluna empilhada */
 .case-card {
   max-height: none !important;
   height: auto !important;
   border-radius: var(--enc-radius) !important;
   background: #fff !important;
   border: 1px solid rgba(0,0,0,0.08) !important;
-  padding: 36px 40px !important;
+  padding: 24px 20px !important;
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 40px !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
   overflow: visible !important;
   align-items: start !important;
 }
 
-/* Coluna esquerda — narrativa */
 .case-left {
   display: flex !important;
   flex-direction: column !important;
-  gap: 18px !important;
+  gap: 16px !important;
 }
 
 .case-num {
@@ -364,7 +411,7 @@ section.cases-section .cases-header p {
 }
 
 .case-card h3 {
-  font-size: 22px !important;
+  font-size: 20px !important;
   font-weight: 800 !important;
   color: #0F0A18 !important;
   margin: 0 !important;
@@ -374,7 +421,7 @@ section.cases-section .cases-header p {
 .case-sector {
   font-size: 13px !important;
   color: rgba(0,0,0,0.45) !important;
-  margin-top: -10px !important;
+  margin-top: -8px !important;
 }
 
 .case-block h4 {
@@ -403,14 +450,14 @@ section.cases-section .cases-header p {
   border-top: 1px solid rgba(0,0,0,0.08) !important;
 }
 
-/* Coluna direita — métricas */
+/* Coluna métricas — dark */
 .case-right {
   background: #0F0A18 !important;
   border-radius: 12px !important;
-  padding: 28px !important;
+  padding: 24px 20px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 16px !important;
+  gap: 14px !important;
 }
 
 .case-label {
@@ -422,7 +469,7 @@ section.cases-section .cases-header p {
 }
 
 .case-metric {
-  font-size: clamp(36px, 5vw, 56px) !important;
+  font-size: clamp(32px, 8vw, 56px) !important;
   font-weight: 900 !important;
   color: #fff !important;
   line-height: 1 !important;
@@ -449,39 +496,62 @@ section.cases-section .cases-header p {
 }
 
 .case-sub-val {
-  font-size: 18px !important;
+  font-size: 16px !important;
   font-weight: 800 !important;
   color: #fff !important;
 }
 
 .case-sub-label {
-  font-size: 10px !important;
+  font-size: 9px !important;
   color: rgba(255,255,255,0.4) !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
 }
 
-/* Mobile: empilhar colunas */
-@media (max-width: 767px) {
+/* Especificidade extra para case-right */
+section.cases-section .case-card { overflow: visible !important; max-height: none !important; }
+section.cases-section .case-card .case-right,
+.carousel-item .case-right { background: #0F0A18 !important; }
+section.cases-section .case-card .case-metric { color: #fff !important; }
+section.cases-section .case-card .case-label { color: #DA0881 !important; }
+section.cases-section .case-card .case-desc { color: rgba(255,255,255,0.55) !important; }
+section.cases-section .case-card .case-sub-val { color: #fff !important; }
+section.cases-section .case-card .case-sub-label { color: rgba(255,255,255,0.4) !important; }
+
+/* Tablet e desktop: 2 colunas lado a lado */
+@media (min-width: 768px) {
   .case-card {
-    grid-template-columns: 1fr !important;
-    padding: 24px 20px !important;
-    gap: 24px !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px !important;
+    padding: 36px 40px !important;
+  }
+  .case-card h3 {
+    font-size: 22px !important;
+  }
+  .case-right {
+    padding: 28px !important;
+  }
+  .case-sub-val {
+    font-size: 18px !important;
   }
 }
 
-/* ─────────────────────────────────────────
-   SEÇÃO 7 — CTA INTERMEDIÁRIO ("Sua vez")
-   Atual: 433px  →  Manter ≤ 0.6 dobras
-   Cor botão primário: preto → rosa
-───────────────────────────────────────── */
-
-section.cta-band {
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
+@media (min-width: 1024px) {
+  section.cases-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
 }
 
-/* Botão primário → rosa */
+/* ═══════════════════════════════════════
+   SEÇÃO 7 — CTA INTERMEDIÁRIO
+   ═══════════════════════════════════════ */
+
+section.cta-band {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
 section.cta-band .btn-dark {
   background: var(--enc-pink) !important;
   color: #fff !important;
@@ -499,33 +569,28 @@ section.cta-band .btn-white-ghost {
   gap: 6px !important;
 }
 
-/* ─────────────────────────────────────────
-   SEÇÃO 8 — DEPOIMENTOS EM VÍDEO
-   Atual: 826px  →  Meta: ≤ 620px
-   Fix thumbnails pretas, compactar heading
-───────────────────────────────────────── */
+@media (min-width: 1024px) {
+  section.cta-band {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   SEÇÃO 8 — DEPOIMENTOS
+   ═══════════════════════════════════════ */
 
 section.test-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.test-section .section-title {
-  font-size: clamp(20px, 2.4vw, 32px) !important;
+  font-size: clamp(20px, 5vw, 32px) !important;
   line-height: 1.15 !important;
   margin-bottom: 8px !important;
 }
 
-section.test-section .section-sub {
-  font-size: 13px !important;
-  margin-bottom: 24px !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 1 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-}
-
-/* Fix thumbnails pretas — fallback visual */
 .tc-thumb {
   background-color: var(--enc-card-dark) !important;
   min-height: 160px !important;
@@ -535,7 +600,6 @@ section.test-section .section-sub {
   border-radius: 8px 8px 0 0 !important;
 }
 
-/* Wrapper do thumb com ícone play (adicionado via JS) */
 .tc-thumb-wrap {
   position: relative !important;
   overflow: hidden !important;
@@ -555,19 +619,22 @@ section.test-section .section-sub {
   pointer-events: none !important;
 }
 
-/* ─────────────────────────────────────────
-   SEÇÃO 9 — MÓDULOS HUB
-   Atual: 1706px  →  Meta: ≤ 640px
-   Hub-wheel hexagonal → Grid 3×2 compacto
-───────────────────────────────────────── */
-
-section.hub-intel-section {
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+@media (min-width: 1024px) {
+  section.test-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
 }
 
-/* Forçar hub-intel-inner a ser bloco centralizado —
-   o site original usa grid 2 colunas aqui, quebrando o alinhamento */
+/* ═══════════════════════════════════════
+   SEÇÃO 9 — MÓDULOS HUB
+   ═══════════════════════════════════════ */
+
+section.hub-intel-section {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
 .hub-intel-inner {
   display: flex !important;
   flex-direction: column !important;
@@ -578,13 +645,11 @@ section.hub-intel-section {
   margin: 0 auto 32px !important;
 }
 
-.hub-intel-inner .eyebrow {
-  width: 100% !important;
-}
+.hub-intel-inner .eyebrow { width: 100% !important; }
 
 section.hub-intel-section h2,
 section.hub-intel-section .hub-intel-title {
-  font-size: clamp(26px, 3.2vw, 42px) !important;
+  font-size: clamp(22px, 6vw, 42px) !important;
   line-height: 1.1 !important;
   margin-bottom: 8px !important;
   width: 100% !important;
@@ -598,7 +663,6 @@ section.hub-intel-section .hub-intel-desc {
   text-align: center !important;
 }
 
-/* Sub-label e sub-headline redundantes — ocultar */
 .modulos-inner > .eyebrow,
 .modulos-inner > .sub-headline,
 .modulos-inner > h3:first-child,
@@ -607,28 +671,24 @@ section.hub-intel-section .hub-intel-desc {
   display: none !important;
 }
 
-/* Hub-wheel: substituir layout absoluto por grid 3×2 */
+/* Hub wheel — mobile: 1 coluna */
 .hub-wheel {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 12px !important;
+  grid-template-columns: 1fr !important;
+  gap: 56px 16px !important;
   position: static !important;
   width: 100% !important;
   height: auto !important;
   max-width: 860px !important;
   margin: 48px auto 0 !important;
   padding-top: 8px !important;
-  gap: 70px 20px !important;
 }
 
-/* Resetar posicionamento absoluto dos cards */
 .hub-card {
   position: static !important;
   transform: none !important;
-  left: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
+  left: auto !important; top: auto !important;
+  right: auto !important; bottom: auto !important;
   width: 100% !important;
   max-height: none !important;
   border-radius: var(--enc-radius) !important;
@@ -642,61 +702,64 @@ section.hub-intel-section .hub-intel-desc {
   transition: border-color 0.2s !important;
 }
 
-.hub-card:hover {
-  border-color: var(--enc-pink) !important;
-}
+.hub-card:hover { border-color: var(--enc-pink) !important; }
 
 .hub-card .hub-card-icon,
 .hub-card .icon,
 .hub-card svg {
-  width: 20px !important;
-  height: 20px !important;
-  font-size: 18px !important;
-  flex-shrink: 0 !important;
+  width: 20px !important; height: 20px !important;
+  font-size: 18px !important; flex-shrink: 0 !important;
 }
 
 .hub-card h3,
 .hub-card .hub-card-title {
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  margin: 0 !important;
+  font-size: 14px !important; font-weight: 700 !important;
+  line-height: 1.25 !important; margin: 0 !important;
   color: var(--enc-white) !important;
 }
 
 .hub-card p,
 .hub-card .hub-card-desc {
-  font-size: 12px !important;
-  color: var(--enc-muted) !important;
-  line-height: 1.45 !important;
-  margin: 0 !important;
+  font-size: 12px !important; color: var(--enc-muted) !important;
+  line-height: 1.45 !important; margin: 0 !important;
 }
 
-/* Ocultar elemento central decorativo do hub-wheel */
-.hub-center,
-.hub-core,
+.hub-center, .hub-core,
 .hub-wheel > svg,
 .hub-wheel > .hub-center-logo {
   display: none !important;
 }
 
-/* modulos-inner centralizado */
 .modulos-inner {
   max-width: 900px !important;
   margin: 0 auto !important;
 }
 
-/* ─────────────────────────────────────────
+@media (min-width: 600px) {
+  .hub-wheel {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hub-wheel {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 70px 20px !important;
+  }
+  section.hub-intel-section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 10 — ESQUISITINHO (MANIFESTO)
-   Mover para rodapé via JS
-   CSS: ocultar na posição original, mostrar no footer
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section#esquisitinho.mascote-section {
   display: none !important;
 }
 
-/* Exibido no footer quando movido via JS */
 .footer-esquisitinho {
   padding: 32px 0 24px !important;
   border-top: 1px solid var(--enc-border) !important;
@@ -704,7 +767,7 @@ section#esquisitinho.mascote-section {
 }
 
 .footer-esquisitinho h2 {
-  font-size: 22px !important;
+  font-size: 20px !important;
   line-height: 1.2 !important;
   margin-bottom: 8px !important;
 }
@@ -715,44 +778,31 @@ section#esquisitinho.mascote-section {
   color: var(--enc-muted) !important;
 }
 
-/* ─────────────────────────────────────────
-   SEÇÃO 11 — PORTFÓLIO / CARDS DE SERVIÇO
-   Atual: 1429px  →  Meta: ≤ 640px
-   Ocultar imagens grandes, grid 3×2 compacto
-───────────────────────────────────────── */
+/* ═══════════════════════════════════════
+   SEÇÃO 11 — PORTFÓLIO
+   ═══════════════════════════════════════ */
 
 section.portfolio-section {
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.portfolio-section h2 {
-  font-size: clamp(20px, 2.6vw, 34px) !important;
+  font-size: clamp(20px, 5vw, 34px) !important;
   line-height: 1.1 !important;
   margin-bottom: 8px !important;
 }
 
-section.portfolio-section .section-sub,
-section.portfolio-section p.sub {
-  font-size: 13px !important;
-  margin-bottom: 24px !important;
-}
-
-/* Restaurar imagens do portfólio */
-.portfolio-img-wrap {
-  display: block !important;
-}
-
-/* Grid 3 colunas, imagens proporcionais */
+/* Mobile: 1 coluna */
 .portfolio-grid {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: 1fr !important;
   gap: 16px !important;
 }
 
-/* Imagem com altura fixa e crop */
 .portfolio-img-wrap {
-  height: 180px !important;
+  display: block !important;
+  height: 200px !important;
   overflow: hidden !important;
 }
 
@@ -763,7 +813,6 @@ section.portfolio-section p.sub {
   display: block !important;
 }
 
-/* Fundo escuro para texto branco ser legível */
 .portfolio-card {
   max-height: none !important;
   border-radius: 10px !important;
@@ -773,50 +822,25 @@ section.portfolio-section p.sub {
   overflow: hidden !important;
 }
 
-.portfolio-card:hover {
-  border-color: #DA0881 !important;
-}
+.portfolio-card:hover { border-color: #DA0881 !important; }
 
 .portfolio-body {
   padding: 12px 16px 16px !important;
-}
-
-.portfolio-card:hover {
-  border-color: var(--enc-pink) !important;
-}
-
-.portfolio-body {
   display: flex !important;
   flex-direction: column !important;
   gap: 4px !important;
 }
 
-/* Tag de categoria */
-.portfolio-body [class*="tag"],
-.portfolio-body [class*="category"],
-.portfolio-body [class*="cat"],
-.portfolio-card-cat,
-.portfolio-card-tag {
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  color: var(--enc-pink) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-}
-
 .portfolio-card h3,
 .portfolio-card-title {
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  color: var(--enc-white) !important;
-  margin: 0 !important;
+  font-size: 15px !important; font-weight: 700 !important;
+  color: var(--enc-white) !important; margin: 0 !important;
   line-height: 1.2 !important;
 }
 
 .portfolio-card p,
 .portfolio-card-desc {
-  font-size: 12px !important;
-  color: var(--enc-muted) !important;
+  font-size: 12px !important; color: var(--enc-muted) !important;
   margin: 0 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 1 !important;
@@ -824,36 +848,39 @@ section.portfolio-section p.sub {
   overflow: hidden !important;
 }
 
-/* ─────────────────────────────────────────
+@media (min-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .portfolio-img-wrap { height: 180px !important; }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  section.portfolio-section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 12 — MÉTODO
-   Atual: 963px  →  Meta: ≤ 640px
-   Timeline horizontal (desktop) via JS + CSS
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section.method-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
 }
 
 section.method-section h2 {
-  font-size: clamp(22px, 2.6vw, 34px) !important;
+  font-size: clamp(20px, 5vw, 34px) !important;
   line-height: 1.1 !important;
   margin-bottom: 8px !important;
 }
 
-section.method-section .section-sub,
-section.method-section p.sub {
-  font-size: 13px !important;
-  margin-bottom: 32px !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
-  -webkit-box-orient: vertical !important;
-  overflow: hidden !important;
-}
-
-/* Método — layout full-width, steps em grid responsivo */
-
-/* Empilhar header + steps + cta verticalmente */
+/* Empilhar header + steps + cta */
 .method-inner {
   display: flex !important;
   flex-direction: column !important;
@@ -861,23 +888,21 @@ section.method-section p.sub {
   gap: 0 !important;
 }
 
-/* Header: título + sub lado a lado */
+/* Mobile: header em coluna */
 .method-header {
   display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 32px !important;
-  margin-bottom: 40px !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-bottom: 24px !important;
   width: 100% !important;
 }
-.method-header > * { flex: 1 !important; }
 
-/* 4 cards lado a lado, largura total */
+/* Mobile: 1 coluna */
 .method-steps,
 .method-steps.timeline-horizontal {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 16px !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
   width: 100% !important;
   padding-top: 0 !important;
   position: static !important;
@@ -888,12 +913,11 @@ section.method-section p.sub {
   display: none !important;
 }
 
-/* Card de cada etapa */
 .method-steps .step {
   background: #1A1225 !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   border-radius: 10px !important;
-  padding: 24px 20px !important;
+  padding: 20px 18px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
@@ -904,77 +928,85 @@ section.method-section p.sub {
 }
 
 .method-steps .step-num {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  border-radius: 50% !important;
-  background: #DA0881 !important;
-  color: #fff !important;
-  display: flex !important;
-  align-items: center !important;
+  width: 36px !important; height: 36px !important;
+  min-width: 36px !important; border-radius: 50% !important;
+  background: #DA0881 !important; color: #fff !important;
+  display: flex !important; align-items: center !important;
   justify-content: center !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
+  font-size: 13px !important; font-weight: 800 !important;
   margin-bottom: 4px !important;
-  position: static !important;
-  z-index: auto !important;
+  position: static !important; z-index: auto !important;
 }
 
 .method-steps .step h3 {
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  margin: 0 !important;
-  color: #fff !important;
+  font-size: 15px !important; font-weight: 700 !important;
+  line-height: 1.3 !important; margin: 0 !important; color: #fff !important;
 }
 
 .method-steps .step p {
-  font-size: 13px !important;
-  line-height: 1.55 !important;
-  color: rgba(255,255,255,0.55) !important;
-  margin: 0 !important;
+  font-size: 13px !important; line-height: 1.55 !important;
+  color: rgba(255,255,255,0.55) !important; margin: 0 !important;
 }
 
 .method-steps .step-chip {
-  font-size: 11px !important;
-  margin-top: auto !important;
-  padding: 3px 10px !important;
-  border-radius: 20px !important;
-  background: rgba(218,8,129,0.12) !important;
-  color: #DA0881 !important;
+  font-size: 11px !important; margin-top: auto !important;
+  padding: 3px 10px !important; border-radius: 20px !important;
+  background: rgba(218,8,129,0.12) !important; color: #DA0881 !important;
   border: 1px solid rgba(218,8,129,0.25) !important;
   align-self: flex-start !important;
 }
 
 .method-cta {
-  margin-top: 32px !important;
+  margin-top: 28px !important;
   width: 100% !important;
 }
 
-/* ─────────────────────────────────────────
+@media (min-width: 600px) {
+  .method-steps,
+  .method-steps.timeline-horizontal {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .method-steps,
+  .method-steps.timeline-horizontal {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+  }
+  .method-header {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+    margin-bottom: 40px !important;
+  }
+  .method-header > * { flex: 1 !important; }
+  section.method-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+
+/* ═══════════════════════════════════════
    SEÇÃO 13 — FAQ
-   Atual: 1119px  →  Meta: ≤ 640px
-   Reduzir padding 120→48px, tipografia compacta
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
 section.faq-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
   background: #0F0A18 !important;
 }
 
 section.faq-section h2 {
-  font-size: clamp(20px, 2.4vw, 32px) !important;
+  font-size: clamp(20px, 5vw, 32px) !important;
   line-height: 1.15 !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 20px !important;
 }
 
 .faq-inner,
-.faq-list {
-  background: transparent !important;
-}
+.faq-list { background: transparent !important; }
 
-/* Item do FAQ — card escuro */
 .faq-item,
 .faq-list details {
   background: #1A1225 !important;
@@ -987,18 +1019,15 @@ section.faq-section h2 {
 .faq-item summary,
 .faq-list details summary,
 .faq-q {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
   color: rgba(255,255,255,0.92) !important;
   list-style: none !important;
 }
 
-.faq-item summary::-webkit-details-marker {
-  display: none !important;
-}
+.faq-item summary::-webkit-details-marker { display: none !important; }
 
-/* Respostas visíveis com cor correta */
 .faq-item p,
 .faq-list details > p,
 .faq-answer,
@@ -1014,10 +1043,19 @@ section.faq-section h2 {
   -webkit-line-clamp: unset !important;
 }
 
-/* ─────────────────────────────────────────
-   CTA PRIMÁRIO — GARANTIA GLOBAL
-   Em toda a página, btn-primary = rosa (#DA0881)
-───────────────────────────────────────── */
+@media (min-width: 1024px) {
+  section.faq-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+  .faq-item summary,
+  .faq-list details summary,
+  .faq-q { font-size: 15px !important; }
+}
+
+/* ═══════════════════════════════════════
+   CTA PRIMÁRIO — GLOBAL
+   ═══════════════════════════════════════ */
 
 .btn-primary,
 a.btn-primary,
@@ -1031,14 +1069,11 @@ input[type="submit"] {
   border-radius: 10px !important;
 }
 
-/* ─────────────────────────────────────────
+/* ═══════════════════════════════════════
    IMAGENS SEM FALLBACK
-   Se imagem não carregar, fundo substituto visível
-───────────────────────────────────────── */
+   ═══════════════════════════════════════ */
 
-img {
-  color: transparent !important;
-}
+img { color: transparent !important; }
 
 img[src=""],
 img:not([src]),
@@ -1046,102 +1081,4 @@ img[src$="#"] {
   background-color: rgba(255,255,255,0.06) !important;
   min-height: 80px !important;
   display: block !important;
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVIDADE — TABLET (768px – 1023px)
-───────────────────────────────────────── */
-
-@media (max-width: 1023px) {
-  section.hero h1 {
-    font-size: clamp(30px, 5.5vw, 44px) !important;
-  }
-
-  .hub-wheel {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .carousel.cases-carousel,
-  .cases-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* Método: 2×2 no tablet */
-  .method-steps,
-  .method-steps.timeline-horizontal {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .method-header {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-}
-
-/* ─────────────────────────────────────────
-   RESPONSIVIDADE — MOBILE (< 768px)
-───────────────────────────────────────── */
-
-@media (max-width: 767px) {
-  section.hero h1 {
-    font-size: clamp(26px, 7.5vw, 36px) !important;
-  }
-
-  .hero-ctas {
-    flex-direction: column !important;
-  }
-
-  .hero-ctas a {
-    width: 100% !important;
-    text-align: center !important;
-    justify-content: center !important;
-  }
-
-  .hub-wheel {
-    grid-template-columns: 1fr !important;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .carousel.cases-carousel,
-  .cases-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .pain-inner {
-    grid-template-columns: 1fr !important;
-  }
-
-  .form-step.active {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Método: 1 coluna no mobile */
-  .method-steps,
-  .method-steps.timeline-horizontal {
-    grid-template-columns: 1fr !important;
-  }
-  .method-header {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  section.pain-section,
-  section.cases-section,
-  section.about-section,
-  section.form-section,
-  section.test-section,
-  section.hub-intel-section,
-  section.portfolio-section,
-  section.method-section,
-  section.faq-section,
-  section.cta-band {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
 }
