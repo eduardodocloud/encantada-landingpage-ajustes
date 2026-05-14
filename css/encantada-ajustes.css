@@ -41,6 +41,11 @@ section.hero {
   min-height: auto !important;
 }
 
+.hero-inner {
+  padding-top: 80px !important;
+  padding-bottom: 40px !important;
+}
+
 section.hero h1 {
   font-size: clamp(28px, 8vw, 52px) !important;
   line-height: 1.05 !important;
