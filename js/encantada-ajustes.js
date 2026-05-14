@@ -68,6 +68,17 @@
         '</svg> Falar no WhatsApp';
     }
 
+    // Hub h2 — forçar quebra de linha entre as duas frases
+    // O h2 tem estrutura: "Menos gerenciamento. " + <em>Mais visão.</em>
+    var hubH2 = document.querySelector('.hub-intel-title');
+    if (hubH2) {
+      var em = hubH2.querySelector('em');
+      if (em && !hubH2.querySelector('br')) {
+        var br = document.createElement('br');
+        hubH2.insertBefore(br, em);
+      }
+    }
+
     // Form section — CTA button text: 1ª pessoa
     var formSubmit = document.querySelector('.form-section [type="submit"], .form-section button[type="submit"]');
     if (formSubmit) {
