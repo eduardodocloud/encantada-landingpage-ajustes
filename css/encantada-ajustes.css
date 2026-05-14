@@ -612,8 +612,8 @@ section#esquisitinho.mascote-section {
 ───────────────────────────────────────── */
 
 section.portfolio-section {
-  padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
 }
 
 section.portfolio-section h2 {
@@ -628,31 +628,24 @@ section.portfolio-section p.sub {
   margin-bottom: 24px !important;
 }
 
-/* Ocultar imagem grande — ela quebra a altura */
+/* Restaurar imagens do portfólio */
 .portfolio-img-wrap {
-  display: none !important;
+  display: block !important;
 }
 
-/* Grid 3×2 compacto */
+/* Grid 2 colunas (layout original) */
 .portfolio-grid {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 12px !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0 !important;
 }
 
 .portfolio-card {
-  max-height: 140px !important;
-  border-radius: var(--enc-radius) !important;
-  background: var(--enc-card-dark) !important;
-  border: 1px solid var(--enc-border) !important;
-  padding: 16px 18px !important;
-  text-decoration: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  gap: 5px !important;
-  transition: border-color 0.2s !important;
-  overflow: hidden !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .portfolio-card:hover {
@@ -837,6 +830,19 @@ section.faq-section h2 {
   line-height: 1.65 !important;
   color: var(--enc-muted) !important;
   margin-top: 8px !important;
+}
+
+/* Fix respostas FAQ — garantir visibilidade */
+.faq-list details > p,
+.faq-item > p,
+.faq-answer {
+  display: block !important;
+  visibility: visible !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
 }
 
 /* ─────────────────────────────────────────
