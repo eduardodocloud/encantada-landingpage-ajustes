@@ -300,9 +300,9 @@ section.form-section {
   max-width: 48px !important;
 }
 
-/* ── Form pages (steps) ── */
+/* ── Form pages — JS controla display via style="display:none/block" ── */
 .form-page {
-  display: block !important;
+  box-sizing: border-box;
 }
 
 /* ── Field rows — 1 col mobile, 2 col tablet+ ── */
