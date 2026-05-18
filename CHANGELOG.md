@@ -4,6 +4,40 @@ Registro de todos os ajustes realizados no site https://comunicacaoencantada.com
 
 ---
 
+## [2026-05-18] — v2.0 — Carrossel 3D, count-up, gradientes e depoimentos
+
+> Todas as alterações abaixo foram aplicadas diretamente no widget HTML do Elementor (widget ID `59af0b9`, post 636). A source page de referência está em `elementor/page-source.html`.
+
+### Cases — Carrossel 3D (cc3)
+- Substituído carrossel flat por carrossel 3D com efeito perspectiva (`perspective: 1400px`)
+- Cards laterais aparecem em `translateX(±58%) translateZ(-220px) rotateY(±38deg) scale(0.82)`
+- Navegação por setas, dots, clique nos cards laterais e swipe touch
+- Auto-init via IIFE com fallback `DOMContentLoaded`
+- Cards compactados: `display:flex; flex-direction:row` com gaps e paddings reduzidos
+- Seção ajustada para caber acima da dobra (`padding: 20px 0`)
+
+### Cases — Visual do card
+- Painel de métricas (`case-right`) com gradiente quente: `linear-gradient(145deg, #F9AF3C 0%, #F06040 32%, #DA0881 68%, #8B1464 100%)`
+- Número principal (`case-metric`) em branco `#fff`
+- Sub-métricas (`.case-sub .v`) em preto `#0F0A18`
+- Labels e descrições em `rgba(0,0,0,0.65–0.75)`
+
+### Count-up animado (scroll-triggered)
+- **Seção Cases**: anima `.case-metric` e `.case-sub .v` de 0 ao valor ao entrar na viewport; reseta ao sair; re-anima por troca de card no carrossel
+- **Dashboard hero** (`.dash-card .dval`): anima todos os números principais; preserva spans `.dup` (▲ +11.700%, ▲ 3x) fixos
+- Parser suporta: inteiros, decimais com vírgula (pt-BR), separador de milhar com ponto, prefixos `R$`, sinais `+/-`, sufixos `k`, `%`, `x`
+- `font-variant-numeric: tabular-nums` + `min-height` nos containers para evitar tremido de layout
+- Cache via `localStorage` para o dashboard
+
+### Depoimentos — Aspect ratio dinâmico
+- Detecta orientação real de cada vídeo via **Vimeo oEmbed API** (`vimeo.com/api/oembed.json`)
+- Cache em `localStorage` (chave `tc_aspect_v1`) — API chamada apenas uma vez por browser
+- Cards portrait (reels 9:16): `width: 200px`, `aspect-ratio: 9/16`
+- Cards landscape (YouTube 16:9): `width: 480px`, `aspect-ratio: 16/9`
+- Fallback para dimensões naturais do thumbnail quando API indisponível
+
+---
+
 ## [2026-05-14] — v1.0 — Reestruturação de layout e conversão
 
 ### Adicionado
