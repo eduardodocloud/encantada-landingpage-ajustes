@@ -1247,3 +1247,94 @@ img[src$="#"] {
 [class*="sib-conversations"] { display: none !important; }
 /* ea11y — widget de acessibilidade (botão azul) */
 #ea11y-root { display: none !important; }
+
+/* ═══════════════════════════════════════
+   MOBILE FIXES — v2.1 (2026-05-18)
+   Corrige problemas identificados em mobile (≤767px)
+   ═══════════════════════════════════════ */
+
+/* ── 1. Dashboard hero: reset escala e centralizar no mobile ── */
+@media (max-width: 767px) {
+  .dash-card {
+    transform: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ── 2. CC3 Carousel: layout mobile — 1 card visível, empilhado verticalmente ── */
+/* Cards usam position:absolute → no mobile o ativo vira static para dar altura ao stage */
+@media (max-width: 640px) {
+  /* Stage: sem perspectiva 3D, altura automática */
+  .cc3-stage {
+    perspective: none !important;
+    height: auto !important;
+    min-height: unset !important;
+    transform-style: flat !important;
+  }
+  /* Card ativo: sai do flow absoluto, ocupa 100% em coluna */
+  section.cases-section .cc3-stage .case-card.cc3-active {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    display: flex !important;
+  }
+  /* Demais cards: escondidos */
+  section.cases-section .cc3-stage .case-card.cc3-prev,
+  section.cases-section .cc3-stage .case-card.cc3-next,
+  section.cases-section .cc3-stage .case-card.cc3-far {
+    display: none !important;
+  }
+  /* Métricas (case-right) aparecem no topo */
+  section.cases-section .cc3-stage .case-card .case-right {
+    order: -1 !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  section.cases-section .cc3-stage .case-card .case-left {
+    border-radius: 0 0 12px 12px !important;
+  }
+  /* Tamanho da métrica principal */
+  section.cases-section .cc3-stage .case-metric {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* ── 3. Depoimentos: corrigir largura dos cards portrait no mobile ── */
+/* A classe .wide (84vw) do CSS original sobrescrevia o 200px dos portrait */
+@media (max-width: 767px) {
+  .tc-slide.tc-portrait {
+    width: 54vw !important;
+    flex: 0 0 54vw !important;
+    min-width: 54vw !important;
+  }
+  .tc-slide.tc-landscape {
+    width: 85vw !important;
+    flex: 0 0 85vw !important;
+    min-width: 85vw !important;
+  }
+}
+
+/* ── 4. Hero stats: espaço para o botão flutuante do WhatsApp ── */
+@media (max-width: 767px) {
+  .hero-stats {
+    padding-right: 72px !important;
+    flex-wrap: wrap !important;
+    gap: 16px 24px !important;
+  }
+}
+
+/* ── 5. Seção Cases: padding compacto no mobile ── */
+@media (max-width: 640px) {
+  section#cases.cases-section {
+    padding: 32px 0 !important;
+  }
+  .cc3-scene {
+    padding: 0 40px !important;
+  }
+  section#cases .cases-header {
+    padding: 0 20px !important;
+  }
+}

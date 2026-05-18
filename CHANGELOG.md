@@ -4,6 +4,27 @@ Registro de todos os ajustes realizados no site https://comunicacaoencantada.com
 
 ---
 
+## [2026-05-18] — v2.1 — Correções mobile
+
+> Aplicadas via `css/encantada-ajustes.css` → WordPress CSS Adicional (Aparência > Personalizar).
+
+### Mobile Fixes (`@media ≤767px / ≤640px`)
+
+| Fix | Problema | Solução |
+|---|---|---|
+| Dashboard hero | `scale(0.85) top right` ficava desalinhado em coluna única | `transform: none` no mobile — tamanho natural |
+| CC3 Carousel | Cards `position:absolute + flex-direction:row` colapsavam o stage e empilhavam side-by-side em 360px | Card ativo vira `position:static + flex-direction:column`; prev/next/far ocultos |
+| Depoimentos landscape | Largura 480px em 360px = overflow | `width: 85vw !important` |
+| Hero stats | Sobreposição com botão WhatsApp | `padding-right: 72px` |
+| Cases padding | Muito espaçamento em telas pequenas | `padding: 32px 0` |
+
+### Resultado das alturas no mobile (360px)
+- Cases section: 840px (era 258px quebrado antes do fix)
+- Test section: 850px ✓
+- Todas as seções dentro de bounds corretos
+
+---
+
 ## [2026-05-18] — v2.0 — Carrossel 3D, count-up, gradientes e depoimentos
 
 > Todas as alterações abaixo foram aplicadas diretamente no widget HTML do Elementor (widget ID `59af0b9`, post 636). A source page de referência está em `elementor/page-source.html`.
