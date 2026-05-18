@@ -1338,3 +1338,36 @@ img[src$="#"] {
     padding: 0 20px !important;
   }
 }
+
+/* ── 6. CTA Band: corrigir alinhamento dos botões (desktop + mobile) ── */
+/* Desktop: impede wrap — texto e botões ficam na mesma linha */
+.cta-band-inner {
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+}
+.cta-band-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+.cta-band-btns {
+  flex: 0 0 auto !important;
+}
+/* Mobile: empilha verticalmente, botões ocupam toda a largura */
+@media (max-width: 767px) {
+  .cta-band-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    flex-wrap: wrap !important;
+    gap: 24px !important;
+  }
+  .cta-band-btns {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+  .cta-band-btns a {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    min-width: 140px !important;
+  }
+}
