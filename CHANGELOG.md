@@ -4,6 +4,44 @@ Registro de todos os ajustes realizados no site https://comunicacaoencantada.com
 
 ---
 
+## [2026-06-09] — v2.3 — Leads direto no WordPress
+
+### Problema identificado
+O formulário enviava dados para um **Google Apps Script** (Google Sheets) via `fetch` com `mode: 'no-cors'`. Esse modo faz o fetch **sempre resolver com sucesso** — mesmo que o script estivesse morto. Resultado: usuário via a tela de sucesso, Google Ads disparava conversão, mas nenhum dado chegava a lugar nenhum.
+
+### Solução implementada
+
+**1. PHP — WPCode snippet (snippet_id: 954)**
+- Registra CPT `encantada_lead` visível no menu WP Admin > Leads
+- Endpoint REST `POST /wp-json/encantada/v1/lead` — sem autenticação (público)
+- Salva todos os campos como post meta com sanitização
+- Envia e-mail de notificação para o admin do site a cada novo lead
+- Meta box no admin exibe todos os dados do lead formatados
+- Colunas customizadas na listagem: Nome/Empresa, E-mail, WhatsApp, Gargalo, Data
+
+**2. JS — Elementor widget `59af0b9`**
+- Substituída função `enviarFormulario()` + `SCRIPT_URL` do Google Apps Script
+- Novo `fetch POST /wp-json/encantada/v1/lead` com `Content-Type: application/json`
+- Erro real tratado: se API retornar `success: false` ou cair no `.catch`, mostra alerta e reabilita botão
+- Tela de sucesso só aparece quando `data.success === true`
+
+### Testado
+- Endpoint respondeu `{ success: true, id: 958 }` no primeiro teste
+- Lead de teste aparece em WP Admin > Leads com todos os campos
+
+---
+
+## [2026-06-09] — v2.2 — Fix CTA Band (botões desalinhados)
+
+> Aplicado via `css/encantada-ajustes.css` → WordPress CSS Adicional.
+
+| Problema | Fix |
+|---|---|
+| Desktop: botões quebravam para 2ª linha (flex-wrap) | `flex-wrap: nowrap` no `.cta-band-inner` |
+| Mobile: botões cortados e desalinhados | `flex-direction: column` + botões `width: 100%` |
+
+---
+
 ## [2026-05-18] — v2.1 — Correções mobile
 
 > Aplicadas via `css/encantada-ajustes.css` → WordPress CSS Adicional (Aparência > Personalizar).
