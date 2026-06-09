@@ -4,6 +4,23 @@ Registro de todos os ajustes realizados no site https://comunicacaoencantada.com
 
 ---
 
+## [2026-06-09] — v2.4 — Leads migrados para functions.php (permanente)
+
+> Código movido de WPCode (plugin desinstalado, frágil) para `functions.php` do tema Hello Elementor.
+> Arquivo local: `php/encantada-leads.php`
+
+### Por que mudou
+O WPCode foi desinstalado e os leads pararam instantaneamente. Qualquer solução baseada em plugin é frágil.
+
+### Solução definitiva
+Código adicionado diretamente em `wp-content/themes/hello-elementor/functions.php` (linhas 303–436).
+Carrega junto com o WordPress, independente de qualquer plugin instalado ou tema filho.
+
+### Como reaplicar (se o tema for atualizado)
+Cole o conteúdo de `php/encantada-leads.php` ao final do novo `functions.php`.
+
+---
+
 ## [2026-06-09] — v2.3 — Leads direto no WordPress
 
 ### Problema identificado
